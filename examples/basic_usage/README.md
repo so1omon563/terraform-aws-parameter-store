@@ -19,17 +19,18 @@ provider "aws" {
   }
 }
 
-module "sns_topic" {
-  source  = "so1omon563/sns/aws"
-  version = "2.0.0" # Replace with appropriate version
+module "parameter" {
+  #   source  = "so1omon563/parameter-store/aws"
+  # version = "1.0.0" # Replace with appropriate version
 
-  name         = "example-topic"
-  topic_prefix = "my-product-name"
+  source = "../.."
+
+  name  = "tf-basic-usage-parameter"
   tags = {
     example = "true"
   }
+  value = "example-parameter"
 }
-output "sns_topic" { value = module.sns_topic }
 ```
 
 ## Requirements
@@ -44,7 +45,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_sns_topic"></a> [sns\_topic](#module\_sns\_topic) | so1omon563/sns/aws | 2.0.0 |
+| <a name="module_parameter"></a> [parameter](#module\_parameter) | ../.. | n/a |
 
 ## Resources
 
@@ -56,9 +57,7 @@ No inputs.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_sns_topic"></a> [sns\_topic](#output\_sns\_topic) | n/a |
+No outputs.
 
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

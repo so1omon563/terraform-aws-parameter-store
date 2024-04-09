@@ -8,24 +8,22 @@ provider "aws" {
 }
 
 variable "name" {
-  default = "tf-basic-usage-topic"
+  default = "tf-basic-usage-parameter"
 }
-
-variable "topic_prefix" {
-  default = "my-product-name"
-}
-
 variable "tags" {
   default = {
     example = "true"
   }
 }
 
-module "sns_topic" {
+module "parameter" {
   source = "../.."
 
-  name         = var.name
-  topic_prefix = var.topic_prefix
-  tags         = var.tags
+  name  = var.name
+  tags  = var.tags
+  value = "example"
 }
-output "sns_topic" { value = module.sns_topic }
+output "parameter" {
+  value     = module.parameter
+  sensitive = true
+}
